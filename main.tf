@@ -1,9 +1,10 @@
 resource "helm_release" "application" {
-  name       = var.name
-  chart      = local.helm_chart
-  namespace  = var.namespace
-  repository = local.helm_repository
-  version    = var.chart_version
+  name             = var.name
+  chart            = local.helm_chart
+  namespace        = var.namespace
+  create_namespace = true
+  repository       = local.helm_repository
+  version          = var.chart_version
 
   values = [var.disable_heavyweight_metrics ? file("${path.module}/templates/metrics-disable.yaml") : ""]
 
