@@ -1,3 +1,7 @@
+resource "time_sleep" "wait_20_seconds" {
+  create_duration = "20s"
+}
+
 resource "helm_release" "application" {
   name             = var.name
   chart            = local.helm_chart
