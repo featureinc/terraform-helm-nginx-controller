@@ -9,6 +9,12 @@ variable "namespace" {
   default     = "kube-system"
 }
 
+variable "create_namespace" {
+  type        = bool
+  description = "Create the namespace if it does not yet exist"
+  default     = true
+}
+
 variable "chart_version" {
   type        = string
   description = "HELM Chart Version for nginx controller"

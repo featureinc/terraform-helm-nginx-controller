@@ -2,7 +2,7 @@ resource "helm_release" "application" {
   name             = var.name
   chart            = local.helm_chart
   namespace        = var.namespace
-  create_namespace = true
+  create_namespace = var.create_namespace
   repository       = local.helm_repository
   version          = var.chart_version
 
@@ -70,4 +70,6 @@ resource "helm_release" "application" {
       type  = lookup(set.value, "type", null)
     }
   }
+
+  depends_on = [time_sleep.wait_20_seconds]
 }
